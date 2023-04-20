@@ -352,7 +352,7 @@ $(document).on("click", ".delete-button", function () {
       success: function (data) {
         // Reload the page
         console.log(data);
-        location.reload();
+        // location.reload();
       },
       error: function(jqXHR, textStatus, errorThrown) {
         console.log(textStatus, errorThrown);

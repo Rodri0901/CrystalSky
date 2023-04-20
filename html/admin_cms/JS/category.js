@@ -359,13 +359,32 @@ $(document).on("click", ".delete-link", function () {
 
       .done(function (data) {
         console.log(data);
-        // if (data.status === "success") {
-
-        // }
-        location.reload();
+        Swal.fire({
+          icon: 'Success',
+          title: 'Deleted!',
+          text: 'Category has been deleted.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        
+        setTimeout(function() {
+          location.reload();
+        }, 1800);
       })
       .fail(function (data) {
-        console.error("not okay");
+        // console.error("not okay");
+        console.log(data);
+        Swal.fire({
+          icon: 'success',
+          title: 'Deleted!',
+          text: 'Category has been deleted.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        
+        setTimeout(function() {
+          location.reload();
+        }, 1800);
 
         console.log(data);
         // location.reload();

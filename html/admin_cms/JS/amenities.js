@@ -175,14 +175,14 @@ const getAllAmenities = () => {
       AllAmenities.forEach((content) => {
         str += `    
         <tr>
-          <td>${content.id}</td>
+          <td>${content.amn_id}</td>
           <td><img src="/assets/SUBSYSTEM_PHOTOS/CMS/${content.icon}" alt="${content.icon}" width="100px" height="100px"></td>
           <td>${content.item}</td>
           <td>${content.name}</td>
         
           <td>
           <button type="button" id="editRoom${content.id}" class="btn btn-primary edit-button edit_about amenitiesEditBtn" data-id="${content.id}" data-toggle="modal" data-target="#editModal">Edit</button>
-          <a href="#" data-id="${content.id}" class="delete-link amenitiesDelbtn">Delete</a>
+          <a href="#" data-id="${content.amn_id}" class="delete-link amenitiesDelbtn">Delete</a>
           </td>
         </tr>
 
@@ -433,7 +433,7 @@ $(document).on("click", ".delete-link", function () {
   if (confirm("Are you sure you want to delete this category?")) {
     // AJAX call to delete category
     $.ajax({
-      url: url + "deleteAmenities",
+      url: url + "deleteAmenities", // change to the correct PHP file
       type: "post",
       dataType: "json",
       data: {
@@ -443,21 +443,31 @@ $(document).on("click", ".delete-link", function () {
 
       .done(function (data) {
         console.log(data);
-        // if (data.status === "success") {
-
-        // }
-        // location.reload();
-
+      
+          Swal.fire({
+            icon: 'success',
+            title: 'Deleted!',
+            text: 'Category has been deleted.',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          
+          setTimeout(function() {
+            location.reload();
+          }, 1800);
+        
       })
       .fail(function (data) {
-        console.error("not okay");
-
-        console.log(data);
-        // location.reload();
-
+        console.log(data );
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        });
       });
   }
 });
+
 // $(document).on("click", ".delete-button", function () {
 //   // Get the ID of the item being deleted
 //   let itemId = $(this).data("id");

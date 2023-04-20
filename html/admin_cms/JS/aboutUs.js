@@ -5,9 +5,18 @@ $(document).ready(function () {
 });
 
 const getContentAbout = () => {
-  // if success
+  $.ajax({
+    url: url + "getContentAbout",
+    type: "post",
+    dataType: "json",
+  })
+    // if success
 
-  // $("#ArchivedGallery").empty();
+    .done(function (data) {
+      let AboutContent = data.payload;
+      // accessing all items in the payload
+      console.log(data.remarks);
+
 
   let str = `
   
@@ -165,12 +174,18 @@ input[type=email]{
 
   <form action="${url}addAboutUs" method="post" enctype="multipart/form-data" class="form_aboutus">
 
+  `
+  AboutContent.forEach((content) => {
+
+
+    str += `  
+
                               <div class="about_form_content">
                                 <label for="edit_title_1" class="edit_title_1_content">Edit Title:</label>
-                                <input class="about_edit_text_content" type="text" id="edit_title_1" name="title" >
+                                <input class="about_edit_text_content" type="text" id="edit_title_1" name="title"  value="${content.title}">
                                 <label class="edit_description_about" for="edit_description">Edit About Description:</label>
                                 <textarea class="edit_description_about_area" id="edit_description" name="description"
-                                    ></textarea>
+                                value="${content.description}">${content.description}</textarea>
                               </div>
                       
                               <div class="contact_us_container">
@@ -181,25 +196,35 @@ input[type=email]{
 
                             <div class="contact_email">
                               <div class="cont_container">
-                                <label class="contact_number_container" for="contact_number">Contact Number: </label>
+                                <label class="contact_number_container" for="contact_number" >Contact Number: </label>
                                 
-                                <input class="contact_placeholder" type="number" id="contact_number" name="contact_no" >
+                                <input class="contact_placeholder" type="number" id="contact_number" name="contact_no" value="${content.contact_no}">
                               </div>
                               <div class="em_cont">
                                 <label class="email_container" for="email">Email:</label>
-                                <input class="email_cont" type="email" id="email" name="email" >
+                                <input class="email_cont" type="email" id="email" name="email" value="${content.email}" >
                                 </div>
                               </div>
 
 
+
                                 <label class="location_container" for="location">Address:</label>
-                                <textarea class="edit_address_container" id="edit_address" name="location" ></textarea>
+                                <textarea class="edit_address_container" id="edit_address" name="location" value="${content.location}" > ${content.location}"</textarea>
                                 </div>
 
+                                `;
+                              });
+                              str += `
                                 <button type="submit" class="submit-btn">Submit</button>
                             </form>`;
 
   $("#getContentAbout").append(str);
+
+})
+// if failed
+.fail(function (data) {
+  console.error("not okay");
+});
 };
 
 
@@ -502,8 +527,19 @@ $(document).on('click', '.delete-button', function() {
       success: function(data) {
         // Reload the page
 
-        console.log(data);
-        location.reload();
+        // console.log(data);
+        // location.reload();
+        Swal.fire({
+          icon: 'success',
+          title: 'Deleted!',
+          text: 'Category has been deleted.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        
+        setTimeout(function() {
+          location.reload();
+        }, 1800);
       }
     });
   }

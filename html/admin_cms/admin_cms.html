@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="/css/admin_tabs_pane.css">
     <link rel="stylesheet" href="/assets/General Photos/Crystal Sky - Logo Only.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+
 </head>
 
 
@@ -441,6 +443,14 @@ document.querySelectorAll('.publish_gallery_content[data-status="live"]').forEac
 document.querySelectorAll('.publish_gallery_content[data-status="preview"]').forEach(el => {
   el.classList.add('active');
 });
+
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    var previewButton = document.querySelector('.preview_button .live-btn');
+    previewButton.click();
+  }, 600);
+});
+
 
 // Toggle visibility of elements based on data-status attribute
 document.querySelectorAll('.publish_gallery_content').forEach(el => {

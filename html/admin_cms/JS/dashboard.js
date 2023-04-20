@@ -261,7 +261,17 @@ function RoomPublish(id) {
       .done(function (data) {
         // set id as local storage
         // reload page
-        window.location.reload();
+        Swal.fire({
+          icon: 'success',
+          title: 'Done!',
+          text: 'Room has been published.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        
+        setTimeout(function() {
+          location.reload();
+        }, 1800);
 
         getRooms();
       })
@@ -708,8 +718,20 @@ const announcementPublish = (id) => {
       // if success
       .done(function (data) {
         // set id as local storage
+        Swal.fire({
+          icon: 'success',
+          title: 'Done!',
+          text: 'Announcement has been published.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        
+        setTimeout(function() {
+          location.reload();
+        }, 1800);
+        
+
         // reload page
-        window.location.reload();
 
         // getAnnouncements();
       })
@@ -742,9 +764,17 @@ const eventPublish = (id) => {
       .done(function (data) {
         // set id as local storage
         // reload page
-        window.location.reload();
-
-        getEventUnpublish();
+        Swal.fire({
+          icon: 'success',
+          title: 'Done!',
+          text: 'Event has been published.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        
+        setTimeout(function() {
+          location.reload();
+        }, 1800);
       })
       // if failed
       .fail(function (data) {
@@ -905,9 +935,17 @@ const eventUnPublish = (id) => {
       .done(function (data) {
         // set id as local storage
         // reload page
-        window.location.reload();
-
-        getEventUnpublish();
+        Swal.fire({
+          icon: 'success',
+          title: 'Done!',
+          text: 'You unpublished an event.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        
+        setTimeout(function() {
+          location.reload();
+        }, 1800);
       })
       // if failed
       .fail(function (data) {
@@ -938,9 +976,17 @@ const announcementUnPublish = (id) => {
       .done(function (data) {
         // set id as local storage
         // reload page
-        window.location.reload();
-
-        getAnnouncementsPublish();
+        Swal.fire({
+          icon: 'success',
+          title: 'Done!',
+          text: 'You unpublished an announcement.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        
+        setTimeout(function() {
+          location.reload();
+        }, 1800);
       })
       // if failed
       .fail(function (data) {
@@ -970,9 +1016,17 @@ const galleryUnPublish = (id) => {
       .done(function (data) {
         // set id as local storage
         // reload page
-        window.location.reload();
-
-        getGalleryUnPublish();
+        Swal.fire({
+          icon: 'success',
+          title: 'Done!',
+          text: 'Image has unpublished.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        
+        setTimeout(function() {
+          location.reload();
+        }, 1800);
       })
       // if failed
       .fail(function (data) {
@@ -1023,8 +1077,17 @@ const galleryArchive = (id) => {
       .done(function (data) {
         // set id as local storage
         // reload page
-        window.location.reload();
-
+        Swal.fire({
+          icon: 'success',
+          title: 'Done!',
+          text: 'You archive an image.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        
+        setTimeout(function() {
+          location.reload();
+        }, 1800);
         // getRooms();
       })
       // if failed
@@ -1055,7 +1118,17 @@ const eventArchive = (id) => {
       .done(function (data) {
         // set id as local storage
         // reload page
-        window.location.reload();
+        Swal.fire({
+          icon: 'success',
+          title: 'Done!',
+          text: 'You archive an event.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        
+        setTimeout(function() {
+          location.reload();
+        }, 1800);
 
         // getRooms();
       })
@@ -1086,8 +1159,17 @@ const announcementArchive = (id) => {
       // if success
       .done(function (data) {
         // set id as local storage
-        // reload page
-        window.location.reload();
+        Swal.fire({
+          icon: 'success',
+          title: 'Done!',
+          text: 'You archive an announcement.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        
+        setTimeout(function() {
+          location.reload();
+        }, 1800);
 
         // getRooms();
       })
